@@ -58,8 +58,6 @@ class BottomMiddleAvatarTabbedScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
@@ -86,11 +84,12 @@ class BottomMiddleAvatarTabbedScaffold extends StatelessWidget {
   }
 
   Widget _buildAppBarBackground(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: appBarHeight,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: appBarColor ?? Theme.of(context).appBarTheme.backgroundColor,
+        color: appBarColor ?? theme.appBarTheme.backgroundColor,
         image:
             bgImage != null
                 ? DecorationImage(

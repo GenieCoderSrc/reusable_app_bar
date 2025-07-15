@@ -93,7 +93,7 @@ class ProfileHeader extends StatelessWidget {
                       style:
                           subTitleTxtStyle ??
                           theme.textTheme.bodySmall?.copyWith(
-                            color: textColor.withOpacity(0.8),
+                            color: textColor.withAlpha((0.8 * 255).round()),
                           ),
                     ),
             ],

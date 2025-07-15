@@ -1,51 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:text_field_builder/text_field_builder.dart';
 
-class SearchableAppBar extends AppBar {
+class SearchableAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const SearchableAppBar({
+    super.key,
+    this.hintTxt,
+    this.bgColor,
+    this.searchField,
+    this.leadingWidget,
+    this.actionsList,
+    this.willShowBackArrow = true,
+    this.leadingWidth,
+    this.searchController,
+    this.onChanged,
+    this.onTapClearIcon,
+  });
+
   final String? hintTxt;
   final Color? bgColor;
   final Widget? searchField;
   final Widget? leadingWidget;
   final List<Widget>? actionsList;
-  final bool? willShowBackArrow;
-  final Widget? leading;
-  @override
+  final bool willShowBackArrow;
   final double? leadingWidth;
+
   final TextEditingController? searchController;
   final ValueChanged<String>? onChanged;
   final VoidCallback? onTapClearIcon;
 
   @override
-  SearchableAppBar({this.leading,
-      this.hintTxt,
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: willShowBackArrow,
+      backgroundColor: bgColor,
+      leading: leadingWidget,
+      leadingWidth: leadingWidth,
+      actions: actionsList,
+      title: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child:
+            searchField ??
+            AppSearchField(
+              fieldModel: FieldModel(
+                hintText: hintTxt ?? 'Search',
+                controller: searchController,
+                onChanged: onChanged,
+                onTapSuffixIcon: onTapClearIcon,
+              ),
+            ),
+      ),
+    );
+  }
 
-      this.bgColor,
-      this.searchField,
-      this.leadingWidget,
-      this.actionsList,
-      this.willShowBackArrow,
-      this.leadingWidth,
-      this.searchController,
-      this.onChanged,
-      this.onTapClearIcon,
-      super.key})
-      : super(
-          title: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: searchField ??
-                AppSearchField(
-                  fieldModel: FieldModel(
-                    hintText: hintTxt ?? 'Search',
-                    controller: searchController,
-                    onChanged: onChanged,
-                    onTapSuffixIcon: onTapClearIcon,
-                  ),
-                ),
-          ),
-          leadingWidth: leadingWidth,
-          leading: leadingWidget,
-          actions: actionsList,
-          backgroundColor: bgColor,
-          automaticallyImplyLeading: willShowBackArrow ?? true,
-        );
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
