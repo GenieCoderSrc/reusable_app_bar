@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'search_field_toggle_builder.dart';
 
-
 class SearchIconAppBar extends AppBar {
   final String? titleTxt;
   final TextStyle? titleTxtStyle;
@@ -38,20 +37,20 @@ class SearchIconAppBar extends AppBar {
     this.centerTitle,
     this.leadingWidth,
   }) : super(
-          title: SearchFieldToggleBuilder(
-            titleTxt: titleTxt,
-            titleTxtStyle: titleTxtStyle,
-            searchField: searchField,
-            hintTxt: hintTxt,
-            searchController: searchController,
-            onChanged: onChanged,
-            onTapClearIcon: onTapClearIcon,
-          ),
-          centerTitle: centerTitle ?? true,
-          leadingWidth: leadingWidth,
-          leading: leadingWidget,
-          actions: actionsList,
-          backgroundColor: bgColor,
-          automaticallyImplyLeading: willShowBackArrow ?? true,
-        );
+         title: SearchFieldToggleBuilder(
+           titleTxt: titleTxt,
+           titleTxtStyle: titleTxtStyle,
+           searchField: searchField,
+           hintTxt: hintTxt,
+           searchController: searchController,
+           onChanged: onChanged,
+           onTapClearIcon: onTapClearIcon,
+         ),
+         centerTitle: centerTitle ?? true,
+         leadingWidth: leadingWidth,
+         leading: leadingWidget,
+         actions: actionsList,
+         backgroundColor: bgColor,
+         automaticallyImplyLeading: willShowBackArrow ?? true,
+       );
 }

@@ -1,91 +1,135 @@
-
 import 'package:flutter/material.dart';
-import 'package:app_style/app_style.dart';
 
-class StackedAppBar extends StatelessWidget {
+class StackedAppBar extends StatelessWidget implements PreferredSizeWidget {
   const StackedAppBar({
     super.key,
-    this.titleTxt,
-    this.titleTxtStyle,
-    this.bgColor,
+    this.title,
+    this.titleStyle,
     this.titleWidget,
-    this.leadingWidget,
-    this.actionsList,
-    this.willShowBackArrow,
-    this.centerTitle,
+    this.leading,
+    this.actions,
+    this.showBackArrow = true,
+    this.centerTitle = true,
     this.leadingWidth,
-    this.appBarRadius,
-    this.height,
-    this.bottomWidget,
-    this.positionTop,
-    this.positionBottom,
-    this.positionLeft,
-    this.positionRight,
+    this.backgroundColor,
+    this.borderRadius,
+    this.height = 120.0,
+    this.overlayWidget,
+    this.overlayTop,
+    this.overlayBottom,
+    this.overlayLeft,
+    this.overlayRight,
   });
 
-  final String? titleTxt;
-  final TextStyle? titleTxtStyle;
-  final Color? bgColor;
+  /// Plain text title (ignored if `titleWidget` is provided).
+  final String? title;
+
+  /// Text style for plain title.
+  final TextStyle? titleStyle;
+
+  /// Custom widget for title. If provided, it overrides [title].
   final Widget? titleWidget;
-  final Widget? leadingWidget;
-  final List<Widget>? actionsList;
-  final bool? willShowBackArrow;
-  final bool? centerTitle;
+
+  /// Background color of the app bar.
+  final Color? backgroundColor;
+
+  /// Leading widget (e.g. back button, icon).
+  final Widget? leading;
+
+  /// Width of the leading widget.
   final double? leadingWidth;
-  final double? appBarRadius;
-  final double? height;
 
-  final Widget? bottomWidget;
+  /// App bar action widgets.
+  final List<Widget>? actions;
 
-  final double? positionTop;
-  final double? positionBottom;
-  final double? positionLeft;
-  final double? positionRight;
+  /// If true, shows the default back arrow when no [leading] is provided.
+  final bool showBackArrow;
+
+  /// Whether the title is centered.
+  final bool centerTitle;
+
+  /// Bottom border radius of the app bar container.
+  final double? borderRadius;
+
+  /// Total height of the app bar.
+  final double height;
+
+  /// Overlay widget that appears inside the [Stack].
+  final Widget? overlayWidget;
+
+  /// Overlay widget position from the top.
+  final double? overlayTop;
+
+  /// Overlay widget position from the bottom.
+  final double? overlayBottom;
+
+  /// Overlay widget position from the left.
+  final double? overlayLeft;
+
+  /// Overlay widget position from the right.
+  final double? overlayRight;
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+
     return Stack(
       children: [
         AppBar(
+          leading: leading,
           leadingWidth: leadingWidth,
-          leading: leadingWidget,
-          actions: actionsList,
+          actions: actions,
           centerTitle: centerTitle,
-          automaticallyImplyLeading: willShowBackArrow ?? true,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          flexibleSpace: SizedBox(
-            height: height ?? 120.0,
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 10),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: bgColor ?? Theme.of(context).appBarTheme.backgroundColor,
-                borderRadius: appBarRadius == null
-                    ? null
-                    : BorderRadius.vertical(
-                        bottom: Radius.circular(appBarRadius ?? 0)),
-              ),
-              child: titleWidget ??
-                  Center(
-                    child: Text(
-                      titleTxt ?? "",
-                      style: titleTxtStyle ??
-                          AppTxtStyles.kTitleTextStyle
-                              .copyWith(color: Colors.white),
-                    ),
-                  ),
-            ),
-          ),
+          automaticallyImplyLeading: showBackArrow,
+          backgroundColor: backgroundColor ?? theme.scaffoldBackgroundColor,
+          flexibleSpace: _buildFlexibleSpace(context),
         ),
-        if (bottomWidget != null)
+        if (overlayWidget != null)
           Positioned(
-            top: positionTop ?? 80.0,
-            bottom: positionBottom,
-            left: positionLeft ?? 0.0,
-            right: positionRight ?? 0.0,
-            child: bottomWidget!,
+            top: overlayTop ?? 80,
+            bottom: overlayBottom,
+            left: overlayLeft ?? 0,
+            right: overlayRight ?? 0,
+            child: overlayWidget!,
           ),
       ],
     );
   }
+
+  Widget _buildFlexibleSpace(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+
+    return SizedBox(
+      height: height,
+      child: Container(
+        padding: const EdgeInsets.only(bottom: 10),
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? theme.appBarTheme.backgroundColor,
+          borderRadius:
+              borderRadius != null
+                  ? BorderRadius.vertical(
+                    bottom: Radius.circular(borderRadius!),
+                  )
+                  : null,
+        ),
+        child:
+            titleWidget ??
+            Center(
+              child: Text(
+                title ?? '',
+                style:
+                    titleStyle ??
+                    theme.textTheme.headlineMedium?.copyWith(
+                      color: Colors.white,
+                    ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }

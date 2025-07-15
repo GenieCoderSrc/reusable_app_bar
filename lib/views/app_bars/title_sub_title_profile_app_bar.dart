@@ -1,16 +1,11 @@
-import 'dart:io';
-
-
 import 'package:flutter/material.dart';
 import 'package:reusable_app_bar/views/widgets/avatar_title_sub_title_builder.dart';
 
 import 'normal_app_bar.dart';
 
-
 class TitleSubTitleProfileAppBar extends StatelessWidget {
   const TitleSubTitleProfileAppBar({
     super.key,
-    this.img,
     this.imageSource,
     this.imgBgColor,
     this.avatarRadius,
@@ -24,12 +19,11 @@ class TitleSubTitleProfileAppBar extends StatelessWidget {
     this.leading,
     this.actionsList,
     this.willShowBackArrow,
+    this.centerTitle,
     this.leadingWidth,
     this.appBarRadius,
-    this.centerTitle,
   });
 
-  final File? img;
   final String? imageSource;
   final Color? imgBgColor;
   final double? avatarRadius;
@@ -54,17 +48,17 @@ class TitleSubTitleProfileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NormalAppBar(
-      bgColor: bgColor,
+      backgroundColor: bgColor,
       leading: leading,
-      actionsList: actionsList,
-      willShowBackArrow: willShowBackArrow,
+      actions: actionsList,
+      showBackArrow: willShowBackArrow ?? true,
+      centerTitle: centerTitle ?? true,
       leadingWidth: leadingWidth ?? 20,
       appBarRadius: appBarRadius,
-      titleWidget: AvatarTitleSubTitleBuilder(
-        img: img,
+      titleWidget: ProfileHeader(
         imageSource: imageSource,
         imgBgColor: imgBgColor,
-        avatarRadius: avatarRadius,
+        avatarRadius: avatarRadius ?? 20,
         titleTxt: titleTxt,
         titleTxtStyle: titleTxtStyle,
         subTitleTxt: subTitleTxt,

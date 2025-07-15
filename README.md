@@ -4,12 +4,13 @@ A customizable Flutter package for building advanced AppBar UIs. The `reusable_a
 
 ## Features
 
-- 🧩 Modular AppBar components
-- 👤 Support for profile avatars (including middle-bottom positioned avatars)
-- 🎨 Custom background colors and images
-- 🔄 Flexible layouts with `Stack` and `FlexibleSpaceBar`
-- 🔍 Integrated search field AppBar with toggle functionality
-- 🎛️ Option menu support with icons
+* 🧩 Modular AppBar components
+* 👤 Support for profile avatars (including middle-bottom positioned avatars)
+* 🧱 Stack-based and flexible layouts with support for overlays
+* 🎨 Custom background colors and images
+* 🔍 Integrated search field AppBar with toggle functionality
+* 🎛️ Popup menu and tabbed content support
+
 
 ## Getting Started
 
@@ -26,9 +27,10 @@ Import the package:
 import 'package:reusable_app_bar/reusable_app_bar.dart';
 ```
 
-## Usage
+## Usage Examples
 
-### Simple App Bar
+### ✅ Simple App Bar
+
 ```dart
 AppSimpleAppBar(
   titleTxt: 'Home',
@@ -40,16 +42,18 @@ AppSimpleAppBar(
 )
 ```
 
-### Profile App Bar with Bottom Avatar
+### 👤 Profile App Bar with Bottom Avatar
+
 ```dart
-BottomMiddleProfileRoundedAppBar(
-  titleTxt: 'Profile',
-  img: File('path/to/image'),
+RoundedProfileAvatarAppBar(
+  title: 'Profile',
+  imageSource: 'path/to/image',
   imgRadius: 40.0,
 )
 ```
 
-### Scaffold with Background and Avatar
+### 🧱 Scaffold with Background and Avatar
+
 ```dart
 BottomMiddleAvatarScaffold(
   titleTxt: 'Dashboard',
@@ -59,28 +63,58 @@ BottomMiddleAvatarScaffold(
 )
 ```
 
+### 🧩 Stack-based App Bar with Avatar
+
+```dart
+StackedAvatarAppBar(
+  title: 'Profile',
+  avatarImage: 'https://example.com/avatar.jpg',
+  avatarRadius: 36.0,
+  borderRadius: 24.0,
+  backgroundColor: Colors.teal,
+)
+```
+
+### 🔍 Searchable App Bar
+
+```dart
+SearchableTopTitleSubTitleProfileAppBar(
+  titleTxt: 'Welcome',
+  subTitleTxt: 'Search your items',
+  searchField: AppSearchField(),
+  imageSource: 'https://example.com/avatar.png',
+)
+```
+
 ## Widgets Included
 
-- `AppSimpleAppBar`
-- `BottomMiddleProfileRoundedAppBar`
-- `BottomMiddleAvatarScaffold`
-- `AppPopupMenuButton`
-- `AppSearchField`
-- `AppCircleAvatar`
+* `AppSimpleAppBar`
+* `BottomMiddleProfileRoundedAppBar`
+* `BottomMiddleAvatarScaffold`
+* `StackedAppBar`
+* `StackedAvatarAppBar`
+* `SearchableTopTitleSubTitleProfileAppBar`
+* `TitleSubTitleProfileAppBar`
+* `AppPopupMenuButton`
+* `AppSearchField`
+* `AppCircleAvatar`
 
 ## Customization Options
 
-All app bars support advanced customization such as:
-- Title widget or text
-- Leading icon/button
-- Actions list
-- Avatar position & style
-- Background customization
-- Elevation and radius
+All app bars support:
+
+* Title text or custom widget
+* Leading icon or widget
+* Action buttons or widgets
+* Avatar position, style, and radius
+* Background color and image with opacity
+* Radius and elevation control
+* Overlay widgets and tabbed body support
 
 ## License
 
 MIT License
 
 ---
-Made with ️ by Shohidul Islam  https://github.com/GenieCoderSrc/reusable_app_bar
+
+Made with ❤️ by [Shohidul Islam](https://github.com/GenieCoderSrc/reusable_app_bar)

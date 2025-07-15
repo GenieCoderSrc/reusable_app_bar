@@ -1,109 +1,112 @@
 import 'package:flutter/material.dart';
-import 'package:app_style/app_style.dart';
 
 class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
   const NormalAppBar({
     super.key,
-    this.titleTxt,
-    this.titleTxtStyle,
-    this.bgColor,
+    this.title,
+    this.titleStyle,
+    this.backgroundColor,
     this.titleWidget,
     this.leading,
-    this.actionsList,
-    this.willShowBackArrow,
-    this.centerTitle,
+    this.actions,
+    this.showBackArrow = true,
+    this.centerTitle = true,
     this.leadingWidth,
     this.appBarRadius,
-    this.flxTitle,
-    this.flxTitleTxtStyle,
+    this.flexibleTitle,
+    this.flexibleTitleStyle,
     this.bottomTitle,
-    this.bottomTitleTxtStyle,
+    this.bottomTitleStyle,
     this.bottomChild,
-    this.bottom,
-    this.appBarHeight = 0,
     this.bottomChildPadding,
+    this.bottom,
+    this.additionalHeight = 0,
   });
 
-  final String? titleTxt;
-  final TextStyle? titleTxtStyle;
+  final String? title;
+  final TextStyle? titleStyle;
 
-  final Color? bgColor;
+  final Color? backgroundColor;
   final Widget? titleWidget;
   final Widget? leading;
-  final List<Widget>? actionsList;
-  final bool? willShowBackArrow;
-  final bool? centerTitle;
+  final List<Widget>? actions;
+  final bool showBackArrow;
+  final bool centerTitle;
   final double? leadingWidth;
   final double? appBarRadius;
 
-  final String? flxTitle;
-  final TextStyle? flxTitleTxtStyle;
+  final String? flexibleTitle;
+  final TextStyle? flexibleTitleStyle;
 
   final String? bottomTitle;
-  final TextStyle? bottomTitleTxtStyle;
+  final TextStyle? bottomTitleStyle;
   final Widget? bottomChild;
   final EdgeInsetsGeometry? bottomChildPadding;
 
   final PreferredSizeWidget? bottom;
 
-  final double appBarHeight;
-
-//
+  /// Extra height to add on top of the default toolbar height
+  final double additionalHeight;
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: titleWidget ?? Text(titleTxt ?? '', style: titleTxtStyle),
-      // title: Padding(
-      //   padding: const EdgeInsets.only(top: 8.0),
-      //   child: titleWidget ?? Text(titleTxt ?? '', style: titleTxtStyle),
-      // ),
-      centerTitle: centerTitle ?? true,
-      leadingWidth: leadingWidth,
-      leading: leading,
-      actions: actionsList,
-      backgroundColor: bgColor,
-      automaticallyImplyLeading: willShowBackArrow ?? true,
-      // flexibleSpace: FlexibleSpaceBar(
-      //   centerTitle: centerTitle,
-      //   title: flxTitleWidget ??
-      //       Text(
-      //         flxTitle ?? "",
-      //         style: flxTitleTxtStyle ??
-      //             AppTxtStyles.kTitleTextStyle.copyWith(color: Colors.red),
-      //       ),
-      // ),
-      flexibleSpace: flxTitle != null
-          ? FlexibleSpaceBar(
-              centerTitle: centerTitle,
-              title: Text(
-                flxTitle ?? "",
-                style: flxTitleTxtStyle ??
-                    AppTxtStyles.kTitleTextStyle.copyWith(color: Colors.white),
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
+    final PreferredSizeWidget? bottomWidget =
+        (bottomChild != null || bottomTitle != null)
+            ? PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight),
+              child: Padding(
+                padding: bottomChildPadding ?? EdgeInsets.zero,
+                child:
+                    bottomTitle != null
+                        ? Text(
+                          bottomTitle!,
+                          style:
+                              bottomTitleStyle ??
+                              textTheme.titleLarge?.copyWith(
+                                color: Colors.white,
+                              ),
+                        )
+                        : bottomChild ?? const SizedBox.shrink(),
               ),
             )
-          : null,
-      bottom: bottomChild != null || bottomTitle != null
-          ? PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: bottomTitle != null
-                  ? Text(bottomTitle ?? "",
-                      style: bottomTitleTxtStyle ??
-                          AppTxtStyles.kTitleTextStyle
-                              .copyWith(color: Colors.white))
-                  : bottomChild!)
-          : bottom,
-      shape: appBarRadius == null
-          ? null
-          : RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(
-                    appBarRadius ?? 20), // Adjust the radius as needed
-              ),
-            ),
+            : bottom;
+
+    return AppBar(
+      title:
+          titleWidget ??
+          (title != null ? Text(title!, style: titleStyle) : null),
+      centerTitle: centerTitle,
+      leading: leading,
+      leadingWidth: leadingWidth,
+      actions: actions,
+      backgroundColor: backgroundColor,
+      automaticallyImplyLeading: showBackArrow,
+      flexibleSpace:
+          flexibleTitle != null
+              ? FlexibleSpaceBar(
+                centerTitle: centerTitle,
+                title: Text(
+                  flexibleTitle!,
+                  style:
+                      flexibleTitleStyle ??
+                      textTheme.titleLarge?.copyWith(color: Colors.white),
+                ),
+              )
+              : null,
+      bottom: bottomWidget,
+      shape:
+          appBarRadius != null
+              ? RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(appBarRadius!),
+                ),
+              )
+              : null,
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight + appBarHeight);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + additionalHeight);
 }

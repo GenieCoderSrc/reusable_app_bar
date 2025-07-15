@@ -22,16 +22,17 @@ class SearchFieldTopTitleBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: centerTitle ?? false
-          ? CrossAxisAlignment.center
-          : CrossAxisAlignment.start,
+      crossAxisAlignment:
+          centerTitle ?? false
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: hasLeading ? 10.0 : 4),
           // child: Text(titleTxt ?? "", style: AppTxtStyles.kTitleWhite),
           child: NormalAppBar(
-            titleTxt: titleTxt,
-            centerTitle: centerTitle,
+            title: titleTxt,
+            centerTitle: centerTitle ?? true,
           ),
         ),
         if (searchField != null)
@@ -39,9 +40,7 @@ class SearchFieldTopTitleBuilder extends StatelessWidget {
         else
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: AppSearchField(
-              fieldModel: fieldModel,
-            ),
+            child: AppSearchField(fieldModel: fieldModel),
           ),
       ],
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:text_field_builder/text_field_builder.dart';
 
-
 import 'stacked_app_bar.dart';
 
 class BottomMiddleSearchAppBar extends StatelessWidget {
@@ -19,7 +18,10 @@ class BottomMiddleSearchAppBar extends StatelessWidget {
     this.leadingWidth,
     this.appBarRadius,
     this.height,
-    this.bottomWidget,
+    this.bottomWidgetPadding = const EdgeInsets.symmetric(
+      horizontal: 16.0,
+      vertical: 8.0,
+    ),
   });
 
   final FieldModel? fieldModel;
@@ -36,24 +38,25 @@ class BottomMiddleSearchAppBar extends StatelessWidget {
   final double? appBarRadius;
   final double? height;
 
-  final Widget? bottomWidget;
+  /// Optional custom padding around the search field.
+  final EdgeInsetsGeometry bottomWidgetPadding;
 
   @override
   Widget build(BuildContext context) {
     return StackedAppBar(
-      titleTxt: titleTxt,
-      titleTxtStyle: titleTxtStyle,
-      bgColor: bgColor,
+      title: titleTxt,
+      titleStyle: titleTxtStyle,
+      backgroundColor: bgColor,
       titleWidget: titleWidget,
-      leadingWidget: leading,
-      actionsList: actionsList,
-      willShowBackArrow: willShowBackArrow,
-      centerTitle: centerTitle,
+      leading: leading,
+      actions: actionsList,
+      showBackArrow: willShowBackArrow ?? true,
+      centerTitle: centerTitle ?? true,
       leadingWidth: leadingWidth,
-      appBarRadius: appBarRadius,
-      height: height,
-      bottomWidget: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      borderRadius: appBarRadius,
+      height: height ?? 120.0,
+      overlayWidget: Padding(
+        padding: bottomWidgetPadding,
         child: AppSearchField(fieldModel: fieldModel),
       ),
     );

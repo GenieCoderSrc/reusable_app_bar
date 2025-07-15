@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reusable_app_bar/views/app_bars/reusable_app_bar.dart';
+import 'package:reusable_app_bar/reusable_app_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Reusable App Bar Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      theme: ThemeData(primarySwatch: Colors.teal),
       home: const HomeScreen(),
     );
   }
@@ -26,16 +24,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppSimpleAppBar(
-        titleTxt: 'Home',
+      appBar: const AppSimpleAppBar(
+        title: 'Home',
         centerTitle: true,
-        bgColor: Colors.teal,
+        backgroundColor: Colors.teal,
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Handle search
-            },
+            icon: Icon(Icons.search),
+            onPressed: null, // Replace with your logic
           ),
         ],
       ),
@@ -59,13 +55,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomMiddleAvatarScaffold(
-      titleTxt: 'Profile',
-      bgImageSource: 'https://via.placeholder.com/600x200',
-      imageSource: 'https://via.placeholder.com/150',
-      body: const Center(
-        child: Text('User Profile Page'),
+    return Scaffold(
+      appBar: const StackedAvatarAppBar(
+        title: 'Profile',
+        backgroundColor: Colors.teal,
+        imageSource: 'https://via.placeholder.com/150',
+        imgRadius: 40,
+        isCenterAvatar: true,
       ),
+      body: const Center(child: Text('User Profile Page')),
     );
   }
 }
