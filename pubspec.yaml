@@ -7,28 +7,28 @@ issue_tracker: https://github.com/GenieCoderSrc/reusable_app_bar/issues
 
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.8.1
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  bloc: ^9.0.0
-  flutter_bloc: ^9.0.0
-  reusable_icon: ^0.0.2
-
   text_field_builder:
     path: ../text_field_builder
   reusable_image_widget:
     path: ../reusable_image_widget
+
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
+  reusable_icon: ^0.0.2
 
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
