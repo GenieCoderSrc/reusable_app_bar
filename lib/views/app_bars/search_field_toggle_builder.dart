@@ -33,19 +33,19 @@ class SearchFieldToggleBuilder extends StatelessWidget {
       builder: (context, isSearching) {
         return isSearching
             ? Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child:
-                  searchField ??
-                  AppSearchField(
-                    fieldModel: fieldModel?.copyWith(
-                      hintText: fieldModel?.hintText ?? 'Search',
+                padding: const EdgeInsets.only(left: 8.0),
+                child:
+                    searchField ??
+                    AppSearchField(
+                      fieldModel: fieldModel?.copyWith(
+                        hintText: fieldModel?.hintText ?? 'Search',
+                      ),
                     ),
-                  ),
-            )
+              )
             : Text(
-              titleTxt ?? '',
-              style: titleTxtStyle ?? const TextStyle(color: Colors.white),
-            );
+                titleTxt ?? '',
+                style: titleTxtStyle ?? const TextStyle(color: Colors.white),
+              );
       },
     );
   }

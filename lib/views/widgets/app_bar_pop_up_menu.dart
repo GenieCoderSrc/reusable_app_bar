@@ -14,19 +14,17 @@ class AppPopupMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       onSelected: onSelected,
-      itemBuilder:
-          (BuildContext context) =>
-              options
-                  .map(
-                    (option) => PopupMenuItem<String>(
-                      value: option.name,
-                      child: ListTile(
-                        leading: Icon(option.icon),
-                        title: Text(option.name),
-                      ),
-                    ),
-                  )
-                  .toList(),
+      itemBuilder: (BuildContext context) => options
+          .map(
+            (option) => PopupMenuItem<String>(
+              value: option.name,
+              child: ListTile(
+                leading: Icon(option.icon),
+                title: Text(option.name),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 }

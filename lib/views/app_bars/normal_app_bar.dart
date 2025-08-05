@@ -54,24 +54,21 @@ class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     final PreferredSizeWidget? bottomWidget =
         (bottomChild != null || bottomTitle != null)
-            ? PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
-              child: Padding(
-                padding: bottomChildPadding ?? EdgeInsets.zero,
-                child:
-                    bottomTitle != null
-                        ? Text(
-                          bottomTitle!,
-                          style:
-                              bottomTitleStyle ??
-                              textTheme.titleLarge?.copyWith(
-                                color: Colors.white,
-                              ),
-                        )
-                        : bottomChild ?? const SizedBox.shrink(),
-              ),
-            )
-            : bottom;
+        ? PreferredSize(
+            preferredSize: const Size.fromHeight(kToolbarHeight),
+            child: Padding(
+              padding: bottomChildPadding ?? EdgeInsets.zero,
+              child: bottomTitle != null
+                  ? Text(
+                      bottomTitle!,
+                      style:
+                          bottomTitleStyle ??
+                          textTheme.titleLarge?.copyWith(color: Colors.white),
+                    )
+                  : bottomChild ?? const SizedBox.shrink(),
+            ),
+          )
+        : bottom;
 
     return AppBar(
       title:
@@ -83,27 +80,25 @@ class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       backgroundColor: backgroundColor,
       automaticallyImplyLeading: showBackArrow,
-      flexibleSpace:
-          flexibleTitle != null
-              ? FlexibleSpaceBar(
-                centerTitle: centerTitle,
-                title: Text(
-                  flexibleTitle!,
-                  style:
-                      flexibleTitleStyle ??
-                      textTheme.titleLarge?.copyWith(color: Colors.white),
-                ),
-              )
-              : null,
+      flexibleSpace: flexibleTitle != null
+          ? FlexibleSpaceBar(
+              centerTitle: centerTitle,
+              title: Text(
+                flexibleTitle!,
+                style:
+                    flexibleTitleStyle ??
+                    textTheme.titleLarge?.copyWith(color: Colors.white),
+              ),
+            )
+          : null,
       bottom: bottomWidget,
-      shape:
-          appBarRadius != null
-              ? RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(appBarRadius!),
-                ),
-              )
-              : null,
+      shape: appBarRadius != null
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(appBarRadius!),
+              ),
+            )
+          : null,
     );
   }
 

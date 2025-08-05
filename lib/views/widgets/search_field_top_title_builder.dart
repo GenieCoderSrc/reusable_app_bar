@@ -22,10 +22,9 @@ class SearchFieldTopTitleBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment:
-          centerTitle ?? false
-              ? CrossAxisAlignment.center
-              : CrossAxisAlignment.start,
+      crossAxisAlignment: centerTitle ?? false
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: hasLeading ? 10.0 : 4),

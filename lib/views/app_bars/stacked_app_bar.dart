@@ -106,12 +106,9 @@ class StackedAppBar extends StatelessWidget implements PreferredSizeWidget {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: backgroundColor ?? theme.appBarTheme.backgroundColor,
-          borderRadius:
-              borderRadius != null
-                  ? BorderRadius.vertical(
-                    bottom: Radius.circular(borderRadius!),
-                  )
-                  : null,
+          borderRadius: borderRadius != null
+              ? BorderRadius.vertical(bottom: Radius.circular(borderRadius!))
+              : null,
         ),
         child:
             titleWidget ??

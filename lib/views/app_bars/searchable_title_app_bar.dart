@@ -44,16 +44,14 @@ class SearchableTitleAppBar extends StatelessWidget {
       elevation: elevation,
       leading: leadingWidget,
       actions: actionsList,
-      title:
-          isTopSearch
-              ? AppSearchField(fieldModel: fieldModel)
-              : Text(titleTxt ?? ""),
+      title: isTopSearch
+          ? AppSearchField(fieldModel: fieldModel)
+          : Text(titleTxt ?? ""),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
-        child:
-            isTopSearch
-                ? Text(titleTxt ?? "")
-                : AppSearchField(fieldModel: fieldModel),
+        child: isTopSearch
+            ? Text(titleTxt ?? "")
+            : AppSearchField(fieldModel: fieldModel),
       ),
       // flexibleSpace: isTitleTop
       //     ? SearchFieldTopTitleBuilder(

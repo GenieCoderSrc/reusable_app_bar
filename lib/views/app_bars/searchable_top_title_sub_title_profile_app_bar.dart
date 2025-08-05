@@ -63,14 +63,13 @@ class SearchableTopTitleSubTitleProfileAppBar extends StatelessWidget
       leading: willShowBackArrow ? leadingWidget ?? BackButton() : null,
       leadingWidth: leadingWidth,
       actions: actionsList,
-      shape:
-          appBarRadius != null
-              ? RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(appBarRadius!),
-                ),
-              )
-              : null,
+      shape: appBarRadius != null
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(appBarRadius!),
+              ),
+            )
+          : null,
       flexibleSpace: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16),

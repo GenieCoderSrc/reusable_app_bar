@@ -107,12 +107,11 @@ class BottomAvatarAppBar extends StatelessWidget
             padding: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               color: bgColor ?? theme.appBarTheme.backgroundColor,
-              borderRadius:
-                  borderRadius != null
-                      ? BorderRadius.vertical(
-                        bottom: Radius.circular(borderRadius!),
-                      )
-                      : null,
+              borderRadius: borderRadius != null
+                  ? BorderRadius.vertical(
+                      bottom: Radius.circular(borderRadius!),
+                    )
+                  : null,
             ),
             child: Center(
               child:
@@ -136,8 +135,9 @@ class BottomAvatarAppBar extends StatelessWidget
             left: isCenterAvatar ? null : avatarLeft ?? 0.0,
             right: isCenterAvatar ? null : avatarRight,
             child: Align(
-              alignment:
-                  isCenterAvatar ? Alignment.topCenter : Alignment.topLeft,
+              alignment: isCenterAvatar
+                  ? Alignment.topCenter
+                  : Alignment.topLeft,
               child: AppAvatar(
                 imageSource: avatarImage,
                 backgroundColor: avatarBgColor,

@@ -90,14 +90,13 @@ class BottomMiddleAvatarTabbedScaffold extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: appBarColor ?? theme.appBarTheme.backgroundColor,
-        image:
-            bgImage != null
-                ? DecorationImage(
-                  image: NetworkImage(bgImage!),
-                  fit: BoxFit.cover,
-                  opacity: bgImageOpacity,
-                )
-                : null,
+        image: bgImage != null
+            ? DecorationImage(
+                image: NetworkImage(bgImage!),
+                fit: BoxFit.cover,
+                opacity: bgImageOpacity,
+              )
+            : null,
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(appBarRadius),
         ),
