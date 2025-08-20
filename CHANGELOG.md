@@ -2,9 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.4
+
+### Aug 22, 2025
+
+### ✨ Updated
+
+- Updated `text_field_builder` to 0.0.5
+- Updated `reusable_image_widget` to 0.1.5
+- Updated `reusable_icon` to 0.0.3
+- Updated Dart sdk to 3.9.0
+- Removed `flutter_lints` Dependency
+
 ## 0.0.3
 
-### Aug 16, 2025
+### Aug 17, 2025
 
 ### ✨ Updated
 
