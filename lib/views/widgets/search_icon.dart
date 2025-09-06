@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reusable_app_bar/view_models/search_field_cubit.dart';
-import 'package:reusable_icon/reusable_icon.dart';
 
 class SearchIcon extends StatelessWidget {
   const SearchIcon({
@@ -25,7 +24,7 @@ class SearchIcon extends StatelessWidget {
           return Padding(
             padding: backIconPadding ?? const EdgeInsets.only(right: 8.0),
             child: InkWell(
-              child: AppIcon(
+              child: Icon(
                 backIcon ?? Icons.cancel_schedule_send_outlined,
                 size: iconSize,
               ),
