@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  text_field_builder: ^0.0.5
+  text_field_builder: ^0.0.6
   reusable_image_widget: ^0.1.7
 
   bloc: ^9.2.1
