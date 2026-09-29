@@ -1,0 +1,12 @@
+name: reusable_app_bar
+description: "A customizable Flutter package providing advanced AppBar widgets with flexible layouts, profile avatars, background images, and more."
+version: 0.0.7
+homepage: https://github.com/GenieCoderSrc/reusable_app_bar
+repository: https://github.com/GenieCoderSrc/reusable_app_bar
+issue_tracker: https://github.com/GenieCoderSrc/reusable_app_bar/issues
+
+
+environment:
+  sdk: \x27>=3.6.0 <4.0.0\x27
+  resolution: workspace
+    flutter: ">=3.0.0"
