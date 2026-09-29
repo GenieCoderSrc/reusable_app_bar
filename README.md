@@ -17,6 +17,8 @@ A customizable Flutter package for building advanced AppBar UIs. The `reusable_a
 Add this package to your `pubspec.yaml`:
 
 ```yaml
+resolution: workspace
+
 dependencies:
   reusable_app_bar: latest
 ```
