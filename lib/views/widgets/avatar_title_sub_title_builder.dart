@@ -61,9 +61,8 @@ class ProfileHeader extends StatelessWidget {
     return Padding(
       padding: padding ?? const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: centerTitle
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.start,
+        mainAxisAlignment:
+            centerTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (imageSource != null)
@@ -79,8 +78,7 @@ class ProfileHeader extends StatelessWidget {
               titleWidget ??
                   Text(
                     titleTxt ?? '',
-                    style:
-                        titleTxtStyle ??
+                    style: titleTxtStyle ??
                         theme.textTheme.titleMedium?.copyWith(
                           color: textColor,
                           fontWeight: FontWeight.w600,
@@ -91,8 +89,7 @@ class ProfileHeader extends StatelessWidget {
                 subTitleWidget ??
                     Text(
                       subTitleTxt!,
-                      style:
-                          subTitleTxtStyle ??
+                      style: subTitleTxtStyle ??
                           theme.textTheme.bodySmall?.copyWith(
                             color: textColor.withAlpha((0.8 * 255).round()),
                           ),

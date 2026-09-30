@@ -60,16 +60,14 @@ class RoundedProfileAvatarAppBar extends StatelessWidget
                         leading ??
                             Icon(
                               Icons.menu,
-                              color:
-                                  theme.appBarTheme.iconTheme?.color ??
+                              color: theme.appBarTheme.iconTheme?.color ??
                                   Colors.white,
                             ),
                         const Spacer(),
                         titleWidget ??
                             Text(
                               title,
-                              style:
-                                  titleStyle ??
+                              style: titleStyle ??
                                   theme.textTheme.titleLarge?.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,

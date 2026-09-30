@@ -52,8 +52,8 @@ class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    final PreferredSizeWidget? bottomWidget =
-        (bottomChild != null || bottomTitle != null)
+    final PreferredSizeWidget? bottomWidget = (bottomChild != null ||
+            bottomTitle != null)
         ? PreferredSize(
             preferredSize: const Size.fromHeight(kToolbarHeight),
             child: Padding(
@@ -61,8 +61,7 @@ class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: bottomTitle != null
                   ? Text(
                       bottomTitle!,
-                      style:
-                          bottomTitleStyle ??
+                      style: bottomTitleStyle ??
                           textTheme.titleLarge?.copyWith(color: Colors.white),
                     )
                   : bottomChild ?? const SizedBox.shrink(),
@@ -71,8 +70,7 @@ class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
         : bottom;
 
     return AppBar(
-      title:
-          titleWidget ??
+      title: titleWidget ??
           (title != null ? Text(title!, style: titleStyle) : null),
       centerTitle: centerTitle,
       leading: leading,
@@ -85,8 +83,7 @@ class NormalAppBar extends StatelessWidget implements PreferredSizeWidget {
               centerTitle: centerTitle,
               title: Text(
                 flexibleTitle!,
-                style:
-                    flexibleTitleStyle ??
+                style: flexibleTitleStyle ??
                     textTheme.titleLarge?.copyWith(color: Colors.white),
               ),
             )

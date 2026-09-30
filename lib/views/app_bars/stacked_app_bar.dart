@@ -110,13 +110,11 @@ class StackedAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? BorderRadius.vertical(bottom: Radius.circular(borderRadius!))
               : null,
         ),
-        child:
-            titleWidget ??
+        child: titleWidget ??
             Center(
               child: Text(
                 title ?? '',
-                style:
-                    titleStyle ??
+                style: titleStyle ??
                     theme.textTheme.headlineMedium?.copyWith(
                       color: Colors.white,
                     ),

@@ -114,12 +114,10 @@ class BottomAvatarAppBar extends StatelessWidget
                   : null,
             ),
             child: Center(
-              child:
-                  titleWidget ??
+              child: titleWidget ??
                   Text(
                     titleTxt ?? '',
-                    style:
-                        titleTxtStyle ??
+                    style: titleTxtStyle ??
                         theme.textTheme.titleLarge?.copyWith(
                           color: Colors.white,
                         ),
@@ -135,9 +133,8 @@ class BottomAvatarAppBar extends StatelessWidget
             left: isCenterAvatar ? null : avatarLeft ?? 0.0,
             right: isCenterAvatar ? null : avatarRight,
             child: Align(
-              alignment: isCenterAvatar
-                  ? Alignment.topCenter
-                  : Alignment.topLeft,
+              alignment:
+                  isCenterAvatar ? Alignment.topCenter : Alignment.topLeft,
               child: AppAvatar(
                 imageSource: avatarImage,
                 backgroundColor: avatarBgColor,

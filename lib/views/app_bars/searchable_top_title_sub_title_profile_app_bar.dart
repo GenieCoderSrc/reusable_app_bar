@@ -100,8 +100,7 @@ class SearchableTopTitleSubTitleProfileAppBar extends StatelessWidget
                   child: AppSearchField(
                     fieldModel: fieldModel?.copyWith(
                       hintText: fieldModel?.hintText ?? 'Search',
-                      radius:
-                          fieldModel?.radius ??
+                      radius: fieldModel?.radius ??
                           TextFieldBorderRadius.fullRadius,
                     ),
                   ),

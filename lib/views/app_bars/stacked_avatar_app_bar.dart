@@ -79,12 +79,10 @@ class StackedAvatarAppBar extends StatelessWidget
                   : null,
             ),
             child: Center(
-              child:
-                  titleWidget ??
+              child: titleWidget ??
                   Text(
                     title ?? '',
-                    style:
-                        titleStyle ??
+                    style: titleStyle ??
                         theme.textTheme.titleLarge?.copyWith(
                           color: Colors.white,
                         ),
@@ -100,9 +98,8 @@ class StackedAvatarAppBar extends StatelessWidget
             left: isCenterAvatar ? null : avatarLeft ?? 0.0,
             right: isCenterAvatar ? null : avatarRight,
             child: Align(
-              alignment: isCenterAvatar
-                  ? Alignment.topCenter
-                  : Alignment.topLeft,
+              alignment:
+                  isCenterAvatar ? Alignment.topCenter : Alignment.topLeft,
               child: AppAvatar(
                 imageSource: imageSource,
                 backgroundColor: imgBgColor,

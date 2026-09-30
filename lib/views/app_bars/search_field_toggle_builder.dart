@@ -34,8 +34,7 @@ class SearchFieldToggleBuilder extends StatelessWidget {
         return isSearching
             ? Padding(
                 padding: const EdgeInsets.only(left: 8.0),
-                child:
-                    searchField ??
+                child: searchField ??
                     AppSearchField(
                       fieldModel: fieldModel?.copyWith(
                         hintText: fieldModel?.hintText ?? 'Search',

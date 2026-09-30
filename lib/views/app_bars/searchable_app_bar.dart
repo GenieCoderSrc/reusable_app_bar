@@ -38,8 +38,7 @@ class SearchableAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actionsList,
       title: Padding(
         padding: const EdgeInsets.only(left: 8.0),
-        child:
-            searchField ??
+        child: searchField ??
             AppSearchField(
               fieldModel: FieldModel(
                 hintText: hintTxt ?? 'Search',
